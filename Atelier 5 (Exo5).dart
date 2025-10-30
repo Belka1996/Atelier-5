@@ -1,26 +1,30 @@
 import 'dart:io';
 
 class NombreNegatifException implements Exception {
-  String message;
+  final String message;
   NombreNegatifException(this.message);
+
+  @override
+  String toString() => "NombreNegatifException : $message";
 }
 
 void main() {
   try {
     stdout.write("Entrez un nombre : ");
-    String? input = stdin.readLineSync();
-    int nombre = int.parse(input!);
+    String? saisie = stdin.readLineSync();
+    double nombre = double.parse(saisie!);
 
     if (nombre < 0) {
       throw NombreNegatifException("Le nombre ne peut pas être négatif !");
     }
 
     print("Le carré de $nombre est ${nombre * nombre}");
-  } on NombreNegatifException catch (e) {
-    print("Erreur : ${e.message}");
   } on FormatException {
-    print("Entrée invalide !");
+    print("Erreur : vous devez entrer un nombre valide !");
+  } on NombreNegatifException catch (e) {
+    print(e);
   } finally {
-    print("Fin du programme.");
+    print("Programme terminé ✅");
   }
 }
+

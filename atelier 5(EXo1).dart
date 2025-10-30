@@ -1,8 +1,10 @@
 void main() {
   try {
-    int resultat = 12 ~/ 0;
+    var resultat = 12 ~/ 0; // Division par zéro
     print("Résultat : $resultat");
   } catch (e) {
-    print("Division impossible");
+    print("Division impossible : $e");
+  } finally {
+    print("Fin d’opération");
   }
 }

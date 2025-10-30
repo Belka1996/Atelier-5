@@ -4,11 +4,13 @@ void main() {
   try {
     stdout.write("Entrez votre âge : ");
     String? saisie = stdin.readLineSync();
-    int age = int.parse(saisie!);
-    print("Votre âge est $age ans");
-  } on FormatException {
-    print("Format invalide : entrez un nombre entier !");
+    int age = int.parse(saisie!); // Peut provoquer une FormatException
+    print("Vous avez $age ans.");
+  } on FormatException catch (e) {
+    print("Erreur de format : entrez un nombre valide !");
+  } catch (e) {
+    print("Erreur inattendue : $e");
   } finally {
-    print("Fin d'opération");
+    print("Fin d’opération");
   }
 }
