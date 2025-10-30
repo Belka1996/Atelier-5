@@ -24,7 +24,8 @@ void main() {
   } on NombreNegatifException catch (e) {
     print(e);
   } finally {
-    print("Programme terminé ✅");
+    print("Programme terminé ");
   }
 }
+
 
